@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import Header from './component/header';
-import './App.css'
+import Header from './components/header';
+import PodcastVideo from './components/contain';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -8,6 +8,7 @@ function App() {
   return (
     <>
       <Header/>
+      <PodcastVideo/>
       {/* <div>
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
