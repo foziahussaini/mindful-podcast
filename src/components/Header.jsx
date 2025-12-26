@@ -10,7 +10,7 @@ function MenuItem({name, activeMenu, color, onChange}){
     return(
         <li className={`menu-item ${activeMenu === name ? 'active' : ""}`}
         onClick={()  => onChange(name)}
-        style={{color: activeMenu === name ? "green" : "rgb(97, 61, 25)"}}>
+        style={{color: activeMenu === name ? "rgb(97, 61, 25)" : "white"}}>
             {name}
         </li>
     );

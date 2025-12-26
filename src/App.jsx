@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Header from './components/header';
-import PodcastVideo from './components/contain';
+// import PodcastVideo from './components/Content';
+import Mainpage from './components/Content';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -8,7 +9,9 @@ function App() {
   return (
     <>
       <Header/>
-      <PodcastVideo/>
+      <Mainpage title = "Welcome to Mindful Minutes Podcast" 
+      description = "Join us as we explore practical tips and strategies to help you navigate the challenges of modern life with mindfulness and intention."/>
+      {/* <PodcastVideo/> */}
       {/* <div>
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
