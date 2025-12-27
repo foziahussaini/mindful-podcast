@@ -17,10 +17,12 @@ function MenuItem({name, activeMenu, color, onChange}){
 }
 
 function Header(){
+    const [backgroundColor, setbackgroundColor] = useState("#a581cff9")
+    const [height, setheight] = useState("50px")
     const [activeMenu, setActiveMenu] = useState('Home'); //why its not working?
    
     return (
-        <header className="header">
+        <header style={{backgroundColor, height}} className="header">
             <div className='logo-content'>
                 <img className='image' src={logoImage} alt="" />
                 <div className='title'> 
