@@ -38,7 +38,7 @@ function Header(){
             </ul>
             <ul className="social-icons">
                 <li className="icon">
-                    <a href="https://discord.gg/pAG6Eytj" target="_blank" >
+                    <a href="https://discord.gg/gfHkuPK9" target="_blank" >
                         <img src={discordlogo} className="discord" alt="discord" />
                     </a>
                 </li>
