@@ -1,10 +1,11 @@
-import { useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 import { useEffect, useState } from "react";
 import PodcastImage from '../assets/podcast1.jpeg';
 import stressImage from '../assets/stress.jpeg';
 import timeImage from '../assets/time.jpeg';
 import List from '../components/episodeList';
 import '../App.css';
+import VideoPlayer from "./VideoPlayer";
 
 function MainPage({subTitle, title, description}) {
     const [color] = useState("#24093e");
@@ -13,7 +14,10 @@ function MainPage({subTitle, title, description}) {
     const [height, setHeight] = useState("60px");
     const [borderRadius, setBorderRadius] = useState("50%");
     const [displayList, setDisplayList] = useState(false);
+    const [currentVideo, setCurrentVideo] = useState("https://www.youtube.com/embed/qUz93CyNIz0?si=kCOYlz9UAYw89nJr");
+    const videoRef = useRef(null)
 
+    // title setinterval animated
     useEffect(() => {
     setDisplayTitle(""); 
 
@@ -30,16 +34,16 @@ function MainPage({subTitle, title, description}) {
     return () => clearInterval(interval);
   }, [title]);
 
-    // useEffect(() => {
-    //     setDisplayTitle("");
-    //     const interval = setInterval(() => {
-    //         setDisplayTitle(prev => {prev.length === title.length ? prev : prev + title[prev.length]});
-    //     }, 70);
 
-    //     return () => clearInterval(interval);
-    // }, [title]);
+  // video scrolling by clicking on list
+  useLayoutEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.scrollIntoView({behavior: "smooth", block:"start"});
+    }
+  }, [currentVideo]);
 
     return(
+      <>
         <div className="main-page">
            <img src={PodcastImage} alt="image" className="podcast-image"/>
            <div className="content">
@@ -48,11 +52,21 @@ function MainPage({subTitle, title, description}) {
               <p style={{color}} className="details">{description}</p>
               <div className="pic">
                 <img style={{width, height, borderRadius}} src={stressImage} alt="stress" 
-                onClick={() => setDisplayList(true)}/> {displayList && <List className="episode-list"/>}
+                onClick={() => setDisplayList(true)}/> {displayList && <List className="episode-list" onEpisodeClick={setCurrentVideo}/>}
                 <img style={{width, height, borderRadius}} src={timeImage} alt="time" />
               </div>
            </div>
         </div>
+        <div className="vedeo1" ref={videoRef}>
+          <VideoPlayer className="video" currentVideo={currentVideo}/>
+        </div>
+         <div className="vedeo2" ref={videoRef}>
+          {currentVideo && <VideoPlayer className="video" currentVideo={currentVideo}/>}
+        </div>
+         <div className="vedeo3" ref={videoRef}>
+          {currentVideo && <VideoPlayer className="video" currentVideo={currentVideo}/>}
+        </div>
+        </>
     )
 }
 export default MainPage;

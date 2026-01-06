@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import Header from './components/header';
-// import PodcastVideo from './components/Content';
 import Mainpage from './components/Content';
-import List from './components/episodeList';
+import VideoPlayer from "./components/VideoPlayer"; 
 
 function App() {
   const [count, setCount] = useState(0)
+  const [currentVideo, setCurrentVideo] = useState(null);
 
   return (
     <>
